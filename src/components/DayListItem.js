@@ -15,10 +15,6 @@ export default function DayListItem(props) {
 
   let dayName = props.name;
 
-  const textClass = classNames("text", {
-    "text--regular": props.name,
-    "text--light": props.spots,
-  });
   const dayClass = classNames("day-list__item", {
     "day-list__item--selected": props.selected,
     "day-list__item--full": props.spots === 0,
