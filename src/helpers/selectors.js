@@ -1,9 +1,9 @@
 export function getAppointmentsForDay(state, day) {
   let appArr = [];
   const appToday = [];
-  state.days.map((element) => {
-    if (element.name === day) {
-      appArr = element.appointments;
+  state.days.map((d) => {
+    if (d.name === day) {
+      appArr = d.appointments;
     }
   });
 
@@ -12,4 +12,22 @@ export function getAppointmentsForDay(state, day) {
   });
 
   return appToday;
+}
+
+export function getInterview(state, interview) {
+  let interviewersObj = state.interviewers;
+  let result = {};
+
+  if (!interviewersObj || !interview) {
+    return null;
+  }
+
+  for (const key in interviewersObj) {
+    if (interviewersObj[key].id === interview.interviewer) {
+      result.interviewer = interviewersObj[key];
+      result.student = interview.student;
+    }
+  }
+
+  return result;
 }
