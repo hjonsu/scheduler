@@ -30,11 +30,26 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
 
   const setDay = (day) => setState({ ...state, day });
+
+  function cancelInterview(id) {
+    const nullAppointment = {
+      ...state.appointments[id],
+      interview: null,
+    };
+    const nullAppointments = { ...state.appointments, [id]: nullAppointment };
+    return axios
+      .delete(`http://localhost:8001/api/appointments/${id}`)
+      .then((res) => {
+        setState({ ...state, nullAppointments });
+        return res;
+      });
+  }
 
   function bookInterview(id, interview) {
     const appointment = {
