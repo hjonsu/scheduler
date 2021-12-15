@@ -4,7 +4,7 @@ import InterviewerList from "components/InterviewerList";
 import { useState } from "react";
 
 export default function Form(props) {
-  console.log(props.interviewers, "inside form comp");
+  // console.log(props.interviewers, "inside form comp");
 
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
@@ -28,12 +28,15 @@ export default function Form(props) {
             type="text"
             placeholder="Enter Student Name"
             value={student}
-            onChange={(event) => setStudent(event.target.value)}
+            onChange={(event) => {
+              setStudent(event.target.value);
+              // console.log("student", event.target.value);
+            }}
           />
         </form>
         <InterviewerList
           interviewers={props.interviewers}
-          onChange={setInterviewer}
+          setInterviewer={setInterviewer}
           value={interviewer}
         />
       </section>
@@ -42,7 +45,7 @@ export default function Form(props) {
           <Button danger onClick={cancel}>
             Cancel
           </Button>
-          <Button confirm onClick={props.onSave}>
+          <Button confirm onClick={() => props.onSave(student, interviewer)}>
             Save
           </Button>
         </section>

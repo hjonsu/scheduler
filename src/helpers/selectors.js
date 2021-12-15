@@ -27,6 +27,7 @@ export function getInterview(state, interview) {
       result.interviewer = interviewersObj[key];
       result.student = interview.student;
     }
+    // console.log("NAME HERE ~~~~~~~~~~~~~~~~", interviewersObj[key]);
   }
 
   return result;
