@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Show(props) {
-  console.log(props, "inside show");
+  // console.log(props, "inside show");
   return (
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">

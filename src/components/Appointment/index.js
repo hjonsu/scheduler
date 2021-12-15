@@ -18,6 +18,7 @@ export default function Appointment(props) {
   const DELETING = "DELETING";
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
+  const EDIT = "EDIT";
 
   console.log(props, "inside appointment");
 
@@ -38,8 +39,6 @@ export default function Appointment(props) {
       .catch(() => {
         transition(ERROR_SAVE, true);
       });
-
-    // props.bookInterview(props.id, interview);
   }
 
   function deleting() {
@@ -71,10 +70,20 @@ export default function Appointment(props) {
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onDelete={() => confirmation()}
+          onEdit={() => transition(EDIT)}
         />
       )}
       {mode === CREATE && (
         <Form onSave={save} interviewers={props.interviewers} onCancel={back} />
+      )}
+      {mode === EDIT && (
+        <Form
+          student={props.interview.student}
+          interviewer={props.interview.interviewer.id}
+          onSave={save}
+          interviewers={props.interviewers}
+          onCancel={back}
+        />
       )}
       {mode === SAVING && <Status message="Saving..." />}
 
