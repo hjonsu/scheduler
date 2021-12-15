@@ -4,6 +4,8 @@ import InterviewerList from "components/InterviewerList";
 import { useState } from "react";
 
 export default function Form(props) {
+  console.log(props.interviewers, "inside form comp");
+
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const reset = () => {
