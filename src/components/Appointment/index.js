@@ -20,8 +20,6 @@ export default function Appointment(props) {
   const ERROR_DELETE = "ERROR_DELETE";
   const EDIT = "EDIT";
 
-  console.log(props, "inside appointment");
-
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
