@@ -18,9 +18,32 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
+deploy:
+  machine:
+    enabled: true
 
+  working_directory: ~/client
+
+  steps:
+    - add_ssh_keys:
+        fingerprints:
+          - "bb:6e:36:ad:b6:1b:de:65:47:f9:ff:fb:8f:77:b7:11"
+    - checkout
+    - run:
+        name: Push Master to Production
+        command: |
+          git push https://github.com/hjonsu/scheduler master:production
 workflows:
   version: 2
-  test:
+  test_and_deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore: production
+      - deploy:
+          filters:
+            branches:
+              ignore: production
+          requires:
+            - build
