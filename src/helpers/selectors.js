@@ -3,12 +3,12 @@ export function getAppointmentsForDay(state, day) {
   const appToday = [];
   state.days.map((d) => {
     if (d.name === day) {
-      appArr = d.appointments;
+      return (appArr = d.appointments);
     }
   });
 
   appArr.map((element) => {
-    appToday.push(state.appointments[element]);
+    return appToday.push(state.appointments[element]);
   });
 
   return appToday;
