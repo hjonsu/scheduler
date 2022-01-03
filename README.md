@@ -1,6 +1,6 @@
 # Interview Scheduler
 
-A light weight compact scheduling app! A live version can be found here: https://hardcore-davinci-b7d3a7.netlify.app/
+A light weight compact scheduling app! A live version can be found here: [hjonsu's scheduler]( https://hardcore-davinci-b7d3a7.netlify.app/)
 
 
 !["Screenshot of overview"](https://github.com/hjonsu/scheduler/blob/master/public/docs/overview.png)
